@@ -8,53 +8,32 @@ Route_1.default.group(() => {
     Route_1.default.group(() => {
         Route_1.default.post('/login', 'AuthController.login');
         Route_1.default.post('/register', 'AuthController.register');
+        Route_1.default.get('/listByAgency/:id', 'AuthController.listByAgency');
+        Route_1.default.get('/listById/:id', 'AuthController.listById');
+        Route_1.default.get('/statistique', 'AuthController.Statistique');
     }).prefix('/auth');
     Route_1.default.group(() => {
-        Route_1.default.get('/list', 'ProduitsController.list');
-        Route_1.default.get('/getById/:id', 'ProduitsController.listById');
-        Route_1.default.post('/save', 'ProduitsController.save');
-        Route_1.default.put('/update/:id', 'ProduitsController.update');
-    }).prefix('/produit').middleware(['auth']);
+        Route_1.default.get('/list', 'StocksController.list');
+        Route_1.default.post('/save', 'StocksController.save');
+        Route_1.default.get('/listByAgency/:id', 'StocksController.listByAgency');
+    }).prefix('/stock');
     Route_1.default.group(() => {
-        Route_1.default.get('/list', 'LotProduitsController.list');
-        Route_1.default.get('/list/state', 'LotProduitsController.listState');
-        Route_1.default.get('/getById/:id', 'LotProduitsController.listById');
-        Route_1.default.get('/getByIdProduit/:idProduit', 'LotProduitsController.getByIdProduit');
-        Route_1.default.get('/getStateVente/:idProduit', 'LotProduitsController.getStateVente');
-        Route_1.default.post('/save', 'LotProduitsController.save');
-        Route_1.default.put('/update/:id', 'LotProduitsController.update');
-    }).prefix('/produit/lot').middleware(['auth']);
+        Route_1.default.get('/list', 'ProduitAgenciesController.list');
+        Route_1.default.post('/save', 'ProduitAgenciesController.save');
+        Route_1.default.get('/listById/:id', 'ProduitAgenciesController.listById');
+        Route_1.default.get('/listByAgency/:id', 'ProduitAgenciesController.listByAgency');
+        Route_1.default.get('/listByCarnet/:id', 'ProduitAgenciesController.listByCarnet');
+    }).prefix('/affectation');
     Route_1.default.group(() => {
-        Route_1.default.get('/list', 'ParamVentesController.list');
-        Route_1.default.get('/getById/:id', 'ParamVentesController.listById');
-        Route_1.default.get('/getByIdProduit/:idProduit', 'ParamVentesController.getByIdProduit');
-        Route_1.default.post('/save', 'ParamVentesController.save');
-        Route_1.default.put('/update/:id', 'ParamVentesController.update');
-    }).prefix('/param/vente').middleware(['auth']);
+        Route_1.default.get('/list', 'ProduitAgenceStocksController.list');
+        Route_1.default.post('/save', 'ProduitAgenceStocksController.save');
+        Route_1.default.get('/listById/:id', 'ProduitAgenceStocksController.listById');
+    }).prefix('/produit');
     Route_1.default.group(() => {
-        Route_1.default.get('/list', 'AddVentesController.list');
-        Route_1.default.get('/getByIdProduit/:id_produit', 'AddVentesController.listByIdProduit');
-        Route_1.default.get('/getByIdUser/:id_user', 'AddVentesController.listByIdUser');
-        Route_1.default.post('/save', 'AddVentesController.save');
-        Route_1.default.put('/update/:id', 'AddVentesController.update');
-        Route_1.default.delete('/deleteByIsUser/:id_user', 'AddVentesController.DeleteByIdUser');
-        Route_1.default.delete('/delete/:id', 'AddVentesController.DeleteById');
-    }).prefix('/add/vente').middleware(['auth']);
-    Route_1.default.group(() => {
-        Route_1.default.get('/list', 'VentesController.list');
-        Route_1.default.get('/getById/:id', 'VentesController.listById');
-        Route_1.default.get('/getByIdUser/:id_user', 'VentesController.listByIdUser');
-        Route_1.default.get('/getDetailVenteByIdUser/:id_vente', 'VentesController.detailVenteByIdVente');
-        Route_1.default.post('/save', 'VentesController.save');
-        Route_1.default.put('/update/:id', 'VentesController.update');
-    }).prefix('/vente').middleware(['auth']);
-    Route_1.default.group(() => {
-        Route_1.default.get('/list', 'ReservationsController.list');
-        Route_1.default.get('/getById/:id', 'ReservationsController.listById');
-        Route_1.default.get('/getByIdUser/:id_user', 'ReservationsController.listByIdUser');
-        Route_1.default.get('/getDetailVenteByIdUser/:id_vente', 'ReservationsController.detailVenteByIdVente');
-        Route_1.default.post('/save', 'ReservationsController.save');
-        Route_1.default.put('/update/:id', 'ReservationsController.update');
-    }).prefix('/reservation').middleware(['auth']);
+        Route_1.default.get('/list', 'LivraisonsController.list');
+        Route_1.default.post('/save', 'LivraisonsController.save');
+        Route_1.default.get('/listById/:id', 'LivraisonsController.listById');
+        Route_1.default.get('/listByIdGerant/:id', 'LivraisonsController.listByIdGerant');
+    }).prefix('/livraison');
 }).prefix('/api');
 //# sourceMappingURL=routes.js.map

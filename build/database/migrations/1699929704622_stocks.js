@@ -7,17 +7,16 @@ const Schema_1 = __importDefault(global[Symbol.for('ioc.use')]("Adonis/Lucid/Sch
 class default_1 extends Schema_1.default {
     constructor() {
         super(...arguments);
-        this.tableName = 'api_tokens';
+        this.tableName = 'stocks';
     }
     async up() {
         this.schema.createTable(this.tableName, (table) => {
-            table.bigIncrements('id').primary();
-            table.bigInteger('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE');
-            table.string('name').notNullable();
-            table.string('type').notNullable();
-            table.string('token', 64).notNullable().unique();
-            table.timestamp('expires_at', { useTz: true }).nullable();
-            table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now());
+            table.increments('id');
+            table.integer('id_carnet', 255).notNullable();
+            table.string('nom_carnet', 255).notNullable();
+            table.integer('nbr', 11).notNullable();
+            table.timestamp('created_at', { useTz: true });
+            table.timestamp('updated_at', { useTz: true }).defaultTo(this.now());
         });
     }
     async down() {
@@ -25,4 +24,4 @@ class default_1 extends Schema_1.default {
     }
 }
 exports.default = default_1;
-//# sourceMappingURL=1676368464471_api_tokens.js.map
+//# sourceMappingURL=1699929704622_stocks.js.map

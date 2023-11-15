@@ -11,10 +11,14 @@ class default_1 extends Schema_1.default {
     }
     async up() {
         this.schema.createTable(this.tableName, (table) => {
-            table.increments('id').primary();
+            table.bigIncrements('id').primary();
+            table.string('nom', 255).notNullable();
             table.string('email', 255).notNullable().unique();
             table.string('password', 180).notNullable();
-            table.integer('role', 1).notNullable().defaultTo(1);
+            table.string('password_review', 180).notNullable();
+            table.integer('role', 1).notNullable().defaultTo(0);
+            table.integer('id_agence', 11).nullable();
+            table.string('nom_agence', 255).nullable();
             table.string('remember_me_token').nullable();
             table.timestamp('created_at', { useTz: true }).notNullable();
             table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.now());

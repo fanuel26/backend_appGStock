@@ -112,7 +112,7 @@ export default class AuthController {
   }
 
 
-  public async Statistique({ request, response }) {
+  public async Statistique({ response }) {
     const user = await User.all();
     const livraison = await Livraison.all();
     const affectation = await ProduitAgency.all();

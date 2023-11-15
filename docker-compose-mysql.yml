@@ -1,13 +1,41 @@
 version: '3'
 
 services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: yourpassword
+    ports:
+      - "3304:3306"
+    volumes:
+      - db-data:/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "4040:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: yourpassword
+
   gestion:
-    container_name: GStock
-    # image: perce26/entrersortie:la_capitale
+    container_name: gestion_stock
+    # image: perce26/entrersortie:gestion_restaurant
     build:
       context: .
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "2020:3333"
+      - "6666:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: stock-db
 
+volumes:
+  db-data:

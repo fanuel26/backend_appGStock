@@ -8,69 +8,54 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const luxon_1 = require("luxon");
-const Hash_1 = __importDefault(global[Symbol.for('ioc.use')]("Adonis/Core/Hash"));
 const Orm_1 = global[Symbol.for('ioc.use')]("Adonis/Lucid/Orm");
-class User extends Orm_1.BaseModel {
-    static async hashPassword(user) {
-        if (user.$dirty.password) {
-            user.password = await Hash_1.default.make(user.password);
-        }
-    }
+class Livraison extends Orm_1.BaseModel {
 }
 __decorate([
     (0, Orm_1.column)({ isPrimary: true }),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
-__decorate([
-    (0, Orm_1.column)(),
-    __metadata("design:type", String)
-], User.prototype, "nom", void 0);
-__decorate([
-    (0, Orm_1.column)(),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    (0, Orm_1.column)({ serializeAs: null }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, Orm_1.column)(),
-    __metadata("design:type", String)
-], User.prototype, "password_review", void 0);
+], Livraison.prototype, "id", void 0);
 __decorate([
     (0, Orm_1.column)(),
     __metadata("design:type", Number)
-], User.prototype, "role", void 0);
+], Livraison.prototype, "id_gerant", void 0);
 __decorate([
     (0, Orm_1.column)(),
     __metadata("design:type", Number)
-], User.prototype, "id_agence", void 0);
+], Livraison.prototype, "id_carnet", void 0);
+__decorate([
+    (0, Orm_1.column)(),
+    __metadata("design:type", Number)
+], Livraison.prototype, "id_collecteur", void 0);
+__decorate([
+    (0, Orm_1.column)(),
+    __metadata("design:type", Number)
+], Livraison.prototype, "nbr", void 0);
 __decorate([
     (0, Orm_1.column)(),
     __metadata("design:type", String)
-], User.prototype, "nom_agence", void 0);
+], Livraison.prototype, "nom_carnet", void 0);
 __decorate([
     (0, Orm_1.column)(),
-    __metadata("design:type", Object)
-], User.prototype, "rememberMeToken", void 0);
+    __metadata("design:type", String)
+], Livraison.prototype, "nom_client", void 0);
+__decorate([
+    (0, Orm_1.column)(),
+    __metadata("design:type", String)
+], Livraison.prototype, "nom_collecteur", void 0);
+__decorate([
+    (0, Orm_1.column)(),
+    __metadata("design:type", String)
+], Livraison.prototype, "numero_client", void 0);
 __decorate([
     Orm_1.column.dateTime({ autoCreate: true }),
     __metadata("design:type", luxon_1.DateTime)
-], User.prototype, "createdAt", void 0);
+], Livraison.prototype, "createdAt", void 0);
 __decorate([
     Orm_1.column.dateTime({ autoCreate: true, autoUpdate: true }),
     __metadata("design:type", luxon_1.DateTime)
-], User.prototype, "updatedAt", void 0);
-__decorate([
-    (0, Orm_1.beforeSave)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [User]),
-    __metadata("design:returntype", Promise)
-], User, "hashPassword", null);
-exports.default = User;
-//# sourceMappingURL=User.js.map
+], Livraison.prototype, "updatedAt", void 0);
+exports.default = Livraison;
+//# sourceMappingURL=Livraison.js.map

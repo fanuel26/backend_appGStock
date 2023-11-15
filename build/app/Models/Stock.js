@@ -9,24 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const luxon_1 = require("luxon");
 const Orm_1 = global[Symbol.for('ioc.use')]("Adonis/Lucid/Orm");
-class ResponseBody extends Orm_1.BaseModel {
+class Stock extends Orm_1.BaseModel {
 }
 __decorate([
-    (0, Orm_1.column)(),
-    __metadata("design:type", Boolean)
-], ResponseBody.prototype, "status", void 0);
+    (0, Orm_1.column)({ isPrimary: true }),
+    __metadata("design:type", Number)
+], Stock.prototype, "id", void 0);
 __decorate([
     (0, Orm_1.column)(),
-    __metadata("design:type", Object)
-], ResponseBody.prototype, "data", void 0);
-__decorate([
-    (0, Orm_1.column)(),
-    __metadata("design:type", Object)
-], ResponseBody.prototype, "dataSecond", void 0);
+    __metadata("design:type", Number)
+], Stock.prototype, "id_carnet", void 0);
 __decorate([
     (0, Orm_1.column)(),
     __metadata("design:type", String)
-], ResponseBody.prototype, "message", void 0);
-exports.default = ResponseBody;
-//# sourceMappingURL=ResponseBody.js.map
+], Stock.prototype, "nom_carnet", void 0);
+__decorate([
+    (0, Orm_1.column)(),
+    __metadata("design:type", Number)
+], Stock.prototype, "nbr", void 0);
+__decorate([
+    Orm_1.column.dateTime({ autoCreate: true }),
+    __metadata("design:type", luxon_1.DateTime)
+], Stock.prototype, "createdAt", void 0);
+__decorate([
+    Orm_1.column.dateTime({ autoCreate: true, autoUpdate: true }),
+    __metadata("design:type", luxon_1.DateTime)
+], Stock.prototype, "updatedAt", void 0);
+exports.default = Stock;
+//# sourceMappingURL=Stock.js.map
