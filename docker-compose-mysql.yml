@@ -1,25 +1,24 @@
 version: '3'
 
 services:
-  mysql:
+  mysqldb:
     image: mysql:latest
-    container_name: mysql_container
-    ports:
-      - "3303:3306"  # Change the host port to the desired MySQL port
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: stock-db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-    command: "--skip-networking=0 --bind-address=::"
+    ports:
+      - "3308:3306"
+    volumes:
+      - db-data:/mysqldb
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin_container
+    restart: always
     ports:
       - "8081:80"  # Change the host port to the desired phpMyAdmin port
     environment:
-      PMA_HOST: mysql
+      PMA_HOST: mysqldb
       PMA_PORT: 3306
       MYSQL_ROOT_PASSWORD: password
 
@@ -31,11 +30,14 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "6666:3333"
+      - "7777:3333"
     environment:
       # NODE_ENV: production
       DB_CONNECTION: mysql
-      MYSQL_HOST: mysql
+      MYSQL_HOST: mysqldb
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_DATABASE: stock-db
+
+volumes:
+  db-data:
