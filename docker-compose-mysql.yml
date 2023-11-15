@@ -1,24 +1,27 @@
 version: '3'
 
 services:
-  db:
+  mysql:
     image: mysql:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: yourpassword
+    container_name: mysql_container
     ports:
-      - "3304:3306"
-    volumes:
-      - db-data:/mysql
+      - "3303:3306"  # Change the host port to the desired MySQL port
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: stock-db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    command: "--skip-networking=0 --bind-address=::"
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    restart: always
+    container_name: phpmyadmin_container
     ports:
-      - "4040:80"
+      - "8081:80"  # Change the host port to the desired phpMyAdmin port
     environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: yourpassword
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: password
 
   gestion:
     container_name: gestion_stock
@@ -32,10 +35,7 @@ services:
     environment:
       # NODE_ENV: production
       DB_CONNECTION: mysql
-      MYSQL_HOST: db
+      MYSQL_HOST: mysql
       MYSQL_USER: root
-      MYSQL_PASSWORD: yourpassword
+      MYSQL_PASSWORD: password
       MYSQL_DATABASE: stock-db
-
-volumes:
-  db-data:
