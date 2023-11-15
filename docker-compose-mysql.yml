@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: yourpassword
 
   la_capitale:
-    container_name: la_capitale
+    container_name: GStock
     # image: perce26/entrersortie:la_capitale
     build:
       context: .
@@ -35,7 +35,7 @@ services:
       MYSQL_HOST: db
       MYSQL_USER: root
       MYSQL_PASSWORD: yourpassword
-      MYSQL_DATABASE: la-capitale
+      MYSQL_DATABASE: stock-db
 
 volumes:
   db-data:
