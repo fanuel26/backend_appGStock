@@ -38,4 +38,4 @@ services:
       MYSQL_DATABASE: stock-db
 
 volumes:
-  dbStock-data:
+  db-data:
