@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: yourpassword
     ports:
-      - "3306:3306"
+      - "3304:3306"
     volumes:
       - db-data:/mysql
 
@@ -15,7 +15,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - "8080:80"
+      - "4040:80"
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: yourpassword
@@ -28,7 +28,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "3333:3333"
+      - "4444:3333"
     environment:
       # NODE_ENV: production
       DB_CONNECTION: mysql
