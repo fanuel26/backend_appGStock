@@ -1,29 +1,44 @@
 version: '3'
 
 services:
-  mysql:
+  db:
     image: mysql:latest
-    container_name: mysql_container
-    ports:
-      - "3302:3306"
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password  # Set your desired root password here
-      MYSQL_DATABASE: stock-db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: yourpassword
+      MYSQL_ROOT_PASSWORD: yourpassword
+    ports:
+      - "3301:3306"
+    volumes:
+      - db-data:/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin_container
+    restart: always
     ports:
       - "8081:80"
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: password
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: yourpassword
 
-  gestion:
-    container_name: gestion_stock
+  gstock:
+    container_name: gstock_backend
+    # image: perce26/entrersortie:la_capitale_restaurant
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8888:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: stock-db
+
+  gstockTggrossist:
+    container_name: gestion_stock_tggrossiste
     # image: perce26/entrersortie:gestion_restaurant
     build:
       context: .
@@ -37,31 +52,7 @@ services:
       MYSQL_HOST: mysql
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: stock-db
-
-  gestion_tggrossist:
-    container_name: gestion_stock_tggrossiste
-    # image: perce26/entrersortie:gestion_restaurant
-    build:
-      context: .
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - "8888:3333"
-    environment:
-      # NODE_ENV: production
-      DB_CONNECTION: mysql
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
       MYSQL_DATABASE: stock-db-tggrossiste
-
-networks:
-  default:
-    ipam:
-      driver: default
-      config:
-        - subnet: "fe80::/64"
 
 volumes:
   db-data:
