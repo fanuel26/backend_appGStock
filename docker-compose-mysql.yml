@@ -24,8 +24,8 @@ services:
     container_name: gstock_backend
     # image: perce26/entrersortie:la_capitale_restaurant
     build:
-      context: .
-      dockerfile: dsh/Dockerfile
+      context: ./dsh
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "8888:3333"
@@ -41,8 +41,8 @@ services:
     container_name: gestion_stock_tggrossiste
     # image: perce26/entrersortie:gestion_restaurant
     build:
-      context: .
-      dockerfile: tggrossiste/Dockerfile
+      context: ./tggrossiste
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "7777:3333"
