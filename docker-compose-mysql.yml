@@ -37,7 +37,7 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: stock-db
 
-  gstockTggrossist:
+  gstocktggrossiste:
     container_name: gestion_stock_tggrossiste
     # image: perce26/entrersortie:gestion_restaurant
     build:
