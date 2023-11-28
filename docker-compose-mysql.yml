@@ -45,13 +45,13 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "7777:3333"
+      - "8877:3333"
     environment:
       # NODE_ENV: production
       DB_CONNECTION: mysql
-      MYSQL_HOST: mysql
+      MYSQL_HOST: db
       MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: stock-db-tggrossiste
 
 volumes:
