@@ -25,7 +25,7 @@ services:
     # image: perce26/entrersortie:la_capitale_restaurant
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dsh/Dockerfile
     restart: always
     ports:
       - "8888:3333"
@@ -42,7 +42,7 @@ services:
     # image: perce26/entrersortie:gestion_restaurant
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: tggrossiste/Dockerfile
     restart: always
     ports:
       - "7777:3333"
