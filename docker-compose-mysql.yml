@@ -54,5 +54,39 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: stock-db-tggrossiste
 
+  gstockn2a:
+    container_name: gestion_stock_n2a
+    # image: perce26/entrersortie:gestion_restaurant
+    build:
+      context: ./n2a
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8866:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: stock-db-n2a
+
+  gstockdshfood:
+    container_name: gestion_stock_dshfood
+    # image: perce26/entrersortie:gestion_restaurant
+    build:
+      context: ./dshfood
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8866:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: stock-db-dshfood
+
 volumes:
   db-data:
