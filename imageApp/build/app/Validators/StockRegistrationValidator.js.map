@@ -1,0 +1,1 @@
+{"version":3,"file":"StockRegistrationValidator.js","sourceRoot":"","sources":["../../../app/Validators/StockRegistrationValidator.ts"],"names":[],"mappings":";;AAAA,2EAAmE;AAGnE,MAAqB,0BAA0B;IAC7C,YAAsB,GAAwB;QAAxB,QAAG,GAAH,GAAG,CAAqB;QAqBvC,WAAM,GAAG,kBAAM,CAAC,MAAM,CAAC,EAAE,CAAC,CAAA;QAa1B,aAAQ,GAAmB,EAAE,CAAA;IAlCa,CAAC;CAmCnD;AApCD,6CAoCC"}
