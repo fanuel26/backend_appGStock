@@ -122,7 +122,7 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: imageapp-db
     volumes:
-      - /home/uploads:containerPath:ro
+      - /home/uploads:./public/uploads
 
 volumes:
   db-data:
