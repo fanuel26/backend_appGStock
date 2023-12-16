@@ -127,3 +127,4 @@ services:
 volumes:
   db-data:
   uploads-volume:
+
