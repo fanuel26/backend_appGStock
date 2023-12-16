@@ -122,7 +122,8 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: imageapp-db
     volumes:
-      - /home/uploads:/usr/src/app/imageApp/public/uploads
+      - uploads-volume:/app/public/uploads
 
 volumes:
   db-data:
+  uploads-volume:
