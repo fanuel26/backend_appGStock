@@ -36,8 +36,6 @@ Route.group(() => {
     Route.post('/save', 'CarnetsController.save')
     Route.get('/listById/:id', 'CarnetsController.listById')
     Route.get('/files/:id', 'CarnetsController.showFile')
+    Route.get('/filesDelete/:id', 'CarnetsController.deleteFile')
   }).prefix('/carnet')
-
-
-
 }).prefix('/api')

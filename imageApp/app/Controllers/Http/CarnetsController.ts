@@ -7,6 +7,7 @@ import Carnet from "App/Models/Carnet";
 import ResponseBody from "App/Models/ResponseBody";
 import Shared from 'App/Models/Shared';
 import CarnetRegistrationValidator from "App/Validators/CarnetRegistrationValidator";
+const { exec } = require('child_process');
 
 export default class CarnetsController {
   public async list({ response }) {
@@ -44,6 +45,44 @@ export default class CarnetsController {
     // Afficher le fichier en tant que réponse
     return response.download(filePath)
   }
+
+  public async deleteFile({ params, response }) {
+    const file = await Carnet.findOrFail(params.id)
+
+    // Construire le chemin complet du fichier
+    const filePath = Application.publicPath(file.image)
+
+    console.log(filePath)
+    // Afficher le fichier en tant que réponse
+    const commandToRun = `rm ${filePath}`;
+
+    exec(commandToRun, (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing command: ${error.message}`);
+        return;
+      }
+
+      console.log(`Command output: ${stdout}`);
+      console.error(`Command errors: ${stderr}`);
+
+    });
+
+    try {
+      await file.delete()
+      return response.accepted({
+        status: true,
+        message: "Fichier retirer avec success",
+      });
+    } catch (error) {
+
+      return response.accepted({
+        status: false,
+        message: "Fichier retirer a echoué",
+      });
+    }
+  }
+
+
 
   public async makeShared({ request, response }) {
     let data = await Database.query()
