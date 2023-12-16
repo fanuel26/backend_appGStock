@@ -88,7 +88,6 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: stock-db-dshfood
 
-
   # la capitale backend
   la_capitale:
     container_name: la_capitale
@@ -105,9 +104,7 @@ services:
       MYSQL_HOST: db
       MYSQL_USER: root
       MYSQL_PASSWORD: yourpassword
-      MYSQL_DATABASE: la-capitale
-
-       # la capitale backend
+      MYSQL_DATABASE: la-capitale # la capitale backend
   imageapp:
     container_name: imageapp
     # image: perce26/entrersortie:gestion_restaurant
@@ -125,9 +122,9 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: imageapp-db
     volumes:
-      - ./public/uploads:/home/uploads
-
-
+      - mydata:/app/data
 
 volumes:
   db-data:
+  mydata:
+    external: true
