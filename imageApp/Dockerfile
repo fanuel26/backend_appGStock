@@ -19,5 +19,11 @@ COPY . .
 # Expose port
 EXPOSE 3333
 
+# Set execute permissions for the entrypoint script
+RUN chmod +x entrypoint.sh
+
+# Set the entry point to the script
+ENTRYPOINT ["./entrypoint.sh"]
+
 # Start the app
 CMD ["npm", "run", "dev"]
