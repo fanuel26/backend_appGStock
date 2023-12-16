@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Replace with your container name or ID
+CONTAINER_NAME_OR_ID="your_container_name_or_id"
+
+# Replace with the volume name and path inside the container
+VOLUME_NAME="your_volume_name"
+CONTAINER_PATH="/path/in/container"
+
+# Replace with the local directory where you want to save the volume contents
+LOCAL_DIR="/path/on/host"
+
+# Get the container path
+CONTAINER_PATH=$(docker exec $CONTAINER_NAME_OR_ID pwd)
+
+# Save the volume to a local directory
+docker cp $CONTAINER_NAME_OR_ID:$CONTAINER_PATH/$CONTAINER_PATH $LOCAL_DIR
