@@ -105,6 +105,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: la-capitale # la capitale backend
+
   imageapp:
     container_name: imageapp
     # image: perce26/entrersortie:gestion_restaurant
@@ -123,6 +124,24 @@ services:
       MYSQL_DATABASE: imageapp-db
     volumes:
       - uploads-volume:/public/uploads
+
+  # la capitale backend
+  la_capitale_restaurant:
+    container_name: la_capitale_restaurant
+    # image: perce26/entrersortie:gestion_restaurant
+    build:
+      context: ./lacapital_restaurant_backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "5555:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: la-capitale-restaurant # la capitale backend
 
 volumes:
   db-data:

@@ -64,7 +64,6 @@ export default class CarnetsController {
 
       console.log(`Command output: ${stdout}`);
       console.error(`Command errors: ${stderr}`);
-
     });
 
     try {
