@@ -130,7 +130,7 @@ services:
     container_name: la_capitale_restaurant
     # image: perce26/entrersortie:gestion_restaurant
     build:
-      context: ./lacapital_restaurant_backend
+      context: ./capitaleRestaurant
       dockerfile: Dockerfile
     restart: always
     ports:
@@ -142,6 +142,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: la-capitale-restaurant # la capitale backend
+
 
 volumes:
   db-data:
