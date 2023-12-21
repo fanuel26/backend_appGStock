@@ -166,7 +166,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - "8833:3333"
+      - "2222:3333"
     environment:
       # NODE_ENV: production
       DB_CONNECTION: mysql
