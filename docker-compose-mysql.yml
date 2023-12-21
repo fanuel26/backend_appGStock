@@ -157,6 +157,24 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: dsh-controller
 
+  # la capitale backend
+  restaurant_dshfood:
+    container_name: restaurant_dshfood
+    # image: perce26/entrersortie:gestion_restaurant
+    build:
+      context: ./restaurantDshFood
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8833:3333"
+    environment:
+      # NODE_ENV: production
+      DB_CONNECTION: mysql
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: yourpassword
+      MYSQL_DATABASE: restaurant-dshfood # la capitale backend
+
 volumes:
   db-data:
   uploads-volume:
