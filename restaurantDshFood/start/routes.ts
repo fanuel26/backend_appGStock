@@ -56,6 +56,7 @@ Route.group(() => {
   /// route pour les Menu
   Route.group(() => {
     Route.get('/list', 'MenusController.list')
+    Route.get('/listStock/:id', 'MenusController.listStock')
     Route.get('/getById/:id', 'MenusController.listById')
     Route.get('/getStockById/:id', 'MenusController.getStockById')
     Route.post('/getByDate', 'MenusController.listByDate')

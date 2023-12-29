@@ -19,6 +19,17 @@ export default class MenusController {
     return response.accepted(responseBody)
   }
 
+  public async listStock({ request, response }) {
+    try {
+      const menu = await Database.query()
+        .from("stocks").where('id_menu', '=', request.params().id);
+
+      return response.accepted({ status: true, data: menu, message: 'menu par id' })
+    } catch {
+      return response.accepted({ status: false, message: 'erreur! id nom trouvez' })
+    }
+  }
+
   public async getStockById({ request, response }) {
     try {
       const menu = await Database.query()
