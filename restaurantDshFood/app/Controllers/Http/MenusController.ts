@@ -21,7 +21,9 @@ export default class MenusController {
 
   public async getStockById({ request, response }) {
     try {
-      const menu = await Stock.query().where('id_menu', '=', request.params().id).sum('nbr', 'sum')
+      const menu = await Database.query()
+        .from("stocks").where('id_menu', '=', request.params().id).sum('qte', 'sum');
+
       return response.accepted({ status: true, data: menu, message: 'menu par id' })
     } catch {
       return response.accepted({ status: false, message: 'erreur! id nom trouvez' })
