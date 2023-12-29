@@ -48,6 +48,7 @@ Route.group(() => {
   Route.group(() => {
     Route.get('/list', 'CategorieMenusController.list')
     Route.get('/getById/:id', 'CategorieMenusController.listById')
+    Route.get('/getStockById/:id', 'CategorieMenusController.getStockById')
     Route.post('/getByDate', 'CategorieMenusController.listByDate')
     Route.post('/save', 'CategorieMenusController.save')
     Route.put('/update/:id', 'CategorieMenusController.update')
@@ -59,6 +60,7 @@ Route.group(() => {
     Route.get('/getById/:id', 'MenusController.listById')
     Route.post('/getByDate', 'MenusController.listByDate')
     Route.post('/save', 'MenusController.save')
+    Route.post('/saveStock', 'MenusController.saveStock')
     Route.put('/update/:id', 'MenusController.update')
   }).prefix('/menu').middleware(['auth'])
 

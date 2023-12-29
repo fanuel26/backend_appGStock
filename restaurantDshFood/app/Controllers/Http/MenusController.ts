@@ -3,7 +3,9 @@
 import Database from "@ioc:Adonis/Lucid/Database";
 import Menu from "App/Models/Menu";
 import ResponseBody from "App/Models/ResponseBody";
+import Stock from "App/Models/Stock";
 import MenuRegistrationValidator from "App/Validators/MenuRegistrationValidator";
+import StockRegistrationValidator from "App/Validators/StockRegistrationValidator";
 
 export default class MenusController {
   public async list({ response }) {
@@ -15,6 +17,15 @@ export default class MenusController {
     responseBody.data = menu
     responseBody.message = 'Liste des menu'
     return response.accepted(responseBody)
+  }
+
+  public async getStockById({ request, response }) {
+    try {
+      const menu = await Stock.query().where('id_menu', '=', request.params().id).sum('nbr', 'sum')
+      return response.accepted({ status: true, data: menu, message: 'menu par id' })
+    } catch {
+      return response.accepted({ status: false, message: 'erreur! id nom trouvez' })
+    }
   }
 
   public async listById({ request, response }) {
@@ -37,6 +48,26 @@ export default class MenusController {
     }
   }
 
+  public async saveStock({ request, response }) {
+    const data = await request.validate(StockRegistrationValidator)
+
+    console.log(data)
+    if (data.errors && data.errors?.length != 0) {
+      return data
+    }
+
+    const menu = new Stock()
+    menu.id_menu = request.body().id_menu
+    menu.qte = request.body().qte
+    // menu.prix_vente_unique = request.body().prix_vente_unique
+
+    try {
+      await menu.save()
+      return response.accepted({ status: true, data: menu, message: 'stock créé avec success' })
+    } catch {
+      return response.accepted({ status: false, data: menu, message: 'erreur lors de l`\'enregistrement!' })
+    }
+  }
 
   public async save({ request, response }) {
     const data = await request.validate(MenuRegistrationValidator)

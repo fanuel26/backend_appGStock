@@ -2,6 +2,7 @@
 
 import Commande from "App/Models/Commande";
 import ResponseBody from "App/Models/ResponseBody";
+import Stock from "App/Models/Stock";
 import CommandeRegistrationValidator from "App/Validators/CommandeRegistrationValidator";
 
 export default class CommandesController {
@@ -85,6 +86,14 @@ export default class CommandesController {
     commande.menus = request.body().menus
     commande.prix_total = request.body().prix_total
 
+    let menu = JSON.parse(request.body().menus);
+    menu.forEach(async item => {
+      const stock = new Stock()
+      stock.id_menu = item.id,
+      stock.qte = parseInt(`${item.qte}`) * -1
+
+      await stock.save();
+    });
     try {
       await commande.save()
       return response.accepted({ status: true, data: commande, message: 'commande créé avec success' })
