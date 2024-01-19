@@ -143,19 +143,19 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: la-capitale-restaurant # la capitale backend
 
-  dsh_controle:
-    container_name: dsh_controle
-    image: perce26/entrersortie:dsh_controle
-    restart: always
-    ports:
-      - "4444:3333"
-    environment:
-      # NODE_ENV: production
-      DB_CONNECTION: mysql
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: yourpassword
-      MYSQL_DATABASE: dsh-controller
+  # dsh_controle:
+  #   container_name: dsh_controle
+  #   image: perce26/entrersortie:dsh_controle
+  #   restart: always
+  #   ports:
+  #     - "4444:3333"
+  #   environment:
+  #     # NODE_ENV: production
+  #     DB_CONNECTION: mysql
+  #     MYSQL_HOST: db
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: yourpassword
+  #     MYSQL_DATABASE: dsh-controller
 
   # la capitale backend
   restaurant_dshfood:

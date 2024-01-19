@@ -37,7 +37,6 @@ Route.group(() => {
     Route.get('/listByAgency/:id', 'StocksController.listByAgency')
   }).prefix('/stock')
 
-
   //// produitAgency route
   Route.group(() => {
     Route.get('/list', 'ProduitAgenciesController.list')
@@ -47,14 +46,12 @@ Route.group(() => {
     Route.get('/listByCarnet/:id', 'ProduitAgenciesController.listByCarnet')
   }).prefix('/affectation')
 
-
   //// produitAgency route
   Route.group(() => {
     Route.get('/list', 'ProduitAgenceStocksController.list')
     Route.post('/save', 'ProduitAgenceStocksController.save')
     Route.get('/listById/:id', 'ProduitAgenceStocksController.listById')
   }).prefix('/produit')
-
 
   //// livraison route
   Route.group(() => {
@@ -63,5 +60,4 @@ Route.group(() => {
     Route.get('/listById/:id', 'LivraisonsController.listById')
     Route.get('/listByIdGerant/:id', 'LivraisonsController.listByIdGerant')
   }).prefix('/livraison')
-
 }).prefix('/api')
