@@ -123,7 +123,7 @@ services:
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: imageapp-db
     volumes:
-      - uploads-volume:/public/uploads
+      - uploads-volume:public/uploads
 
   # la capitale backend
   la_capitale_restaurant:
