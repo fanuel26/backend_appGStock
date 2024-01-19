@@ -122,8 +122,8 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: yourpassword
       MYSQL_DATABASE: imageapp-db
-    # volumes:
-    #   - uploads-volume:public/uploads
+    volumes:
+      - uploads-volume:/public/uploads
 
   # la capitale backend
   la_capitale_restaurant:
