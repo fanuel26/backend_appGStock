@@ -69,12 +69,12 @@ Route.group(() => {
     Route.get('/list', 'ProduitsController.list')
     Route.post('/save', 'ProduitsController.save')
     // Route.get('/listByAgency/:id', 'ProduitsController.listByAgency')
-  }).prefix('/stock')
+  }).prefix('/produit/other')
 
   //// fournisseur route
   Route.group(() => {
     Route.get('/list', 'FournisseursController.list')
     Route.post('/save', 'FournisseursController.save')
     Route.get('/listByProduit/:id', 'FournisseursController.listByProduit')
-  }).prefix('/stock')
+  }).prefix('/fournisseur')
 }).prefix('/api')
