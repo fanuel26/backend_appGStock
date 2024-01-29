@@ -1,17 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'fournisseurs'
+  protected tableName = 'produits'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('nom', 255).notNullable()
-      table.integer('num_first', 11).notNullable()
-      table.integer('num_second', 11)
-      table.string('lieu', 255).notNullable()
-      table.integer('prix', 11).notNullable()
-      table.integer('id_produit', 11).notNullable()
+      table.string('nom', 255).notNullable().unique()
       table.string('etat', 1).notNullable().defaultTo(0)
 
       /**
